@@ -1,17 +1,16 @@
 /**
- * @fileoverview  This is the reducer linked to the stack navigator
+ * @fileoverview  This is the reducer linked to the tab navigator
  *
  * @author        Antoine Chwat
  *
- * @namespace     stackNavigatorReducer
+ * @namespace     tabNavigatorReducer
  */
 'use strict';
 
 const MainNavigator = require('../utils/MainNavigator');
 
 const router = MainNavigator.router;
-const mainNavAction = router.getActionForPathAndParams('Home');
-const initialNavState = router.getStateForAction(mainNavAction);
+const initialNavState = router.getStateForAction({});
 
 /**
  * The navigation reducer updates the navigation state based on the actions it receives
@@ -21,11 +20,11 @@ const initialNavState = router.getStateForAction(mainNavAction);
  *
  * @returns  {Object} The updated navigation state
  *
- * @memberof stackNavigatorReducer
+ * @memberof tabNavigatorReducer
  */
-const stackNavigatorReducer = (state = initialNavState, action) => {
+const tabNavigatorReducer = (state = initialNavState, action) => {
   const nextState = MainNavigator.router.getStateForAction(action, state);
   return nextState || state;
 };
 
-module.exports = stackNavigatorReducer;
+module.exports = tabNavigatorReducer;

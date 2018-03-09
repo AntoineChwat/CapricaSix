@@ -5,8 +5,11 @@ const Platform = ReactNative.Platform;
 const StyleSheet = ReactNative.StyleSheet;
 const Text = ReactNative.Text;
 const View = ReactNative.View;
+const Button = ReactNative.Button;
 
 const createReactClass = require('create-react-class');
+
+const PropTypes = require('prop-types');
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -15,9 +18,11 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const SecondaryPageContainer = createReactClass({
+const MainPage = createReactClass({
+  propTypes: {
+    navigate: PropTypes.func
+  },
   render() {
-    console.log('here we go!');
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -29,12 +34,17 @@ const SecondaryPageContainer = createReactClass({
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Button
+          onPress={this.props.navigate}
+          color='#48BBEC'
+          title='Go'
+        />
       </View>
     );
   }
 });
-SecondaryPageContainer.navigationOptions = {
-  title: 'Pegasus'
+MainPage.navigationOptions = {
+  title: 'Galactica'
 };
 
 const styles = StyleSheet.create({
@@ -42,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#0000FF'
+    backgroundColor: '#FF0000'
   },
   welcome: {
     fontSize: 20,
@@ -56,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = SecondaryPageContainer;
+module.exports = MainPage;

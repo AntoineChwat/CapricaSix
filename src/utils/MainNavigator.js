@@ -7,24 +7,27 @@
  */
 'use strict';
 
-const StackNavigator = require('react-navigation').StackNavigator;
+const TabNavigator = require('react-navigation').TabNavigator;
 
-const MainPageContainer = require('../containers/MainPageContainer');
-const SecondaryPageContainer = require('../containers/SecondaryPageContainer');
+// const MainPageContainer = require('../containers/MainPageContainer');
+const TertiaryPageContainer = require('../containers/TertiaryPageContainer');
+const PrimaryStackNavigator = require('../utils/PrimaryStackNavigator');
 
 /**
  * Create the main navigator
  *
  * @param    {Object} views   the pages in your application
- * @param    {Object} options options allowed by StackNavigator
+ * @param    {Object} options options allowed by TabNavigator
  *
  * @memberof MainNavigator
  */
-const MainNavigator = StackNavigator({
-  Home: { screen: MainPageContainer },
-  NotHome: { screen: SecondaryPageContainer }
+const MainNavigator = TabNavigator({
+  Galactica: { screen: PrimaryStackNavigator },
+  Raptor: { screen: TertiaryPageContainer }
 }, {
-  initialRouteName: 'Home'
+  initialRouteName: 'Galactica',
+  lazy: false,
+  swipeEnabled: true
 });
 
 module.exports = MainNavigator;

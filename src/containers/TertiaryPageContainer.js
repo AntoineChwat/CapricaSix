@@ -15,7 +15,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const SecondaryPageContainer = createReactClass({
+const TertiaryPageContainer = createReactClass({
   render() {
     console.log('here we go!');
     return (
@@ -33,8 +33,8 @@ const SecondaryPageContainer = createReactClass({
     );
   }
 });
-SecondaryPageContainer.navigationOptions = {
-  title: 'Pegasus'
+TertiaryPageContainer.navigationOptions = {
+  title: 'Raptor'
 };
 
 const styles = StyleSheet.create({
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#0000FF'
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = SecondaryPageContainer;
+module.exports = TertiaryPageContainer;
