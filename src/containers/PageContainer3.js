@@ -2,7 +2,7 @@ const NavigationActions = require('react-navigation').NavigationActions;
 
 const connect = require('react-redux').connect;
 
-const MainPage = require('../components/MainPage');
+const Page3 = require('../components/Page3');
 
 /**
  * This function maps the useful part of our application's state to our Main Page's props
@@ -31,14 +31,14 @@ const mapStateToProps = function(state) {
 const mapDispatchToProps = function(dispatch) {
   return {
     navigate: function() {
-      dispatch(NavigationActions.navigate({routeName: 'Pegasus' }));
+      dispatch(NavigationActions.navigate({ routeName: 'Viper' }));
     }
   };
 };
 
-const MainPageContainer = connect(
+const PageContainer3 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainPage);
+)(Page3);
 
-module.exports = MainPageContainer;
+module.exports = PageContainer3;

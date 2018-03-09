@@ -9,9 +9,10 @@
 
 const TabNavigator = require('react-navigation').TabNavigator;
 
-// const MainPageContainer = require('../containers/MainPageContainer');
-const TertiaryPageContainer = require('../containers/TertiaryPageContainer');
+// const PageContainer3 = require('../containers/PageContainer3');
 const PrimaryStackNavigator = require('../utils/PrimaryStackNavigator');
+const SecondaryStackNavigator = require('../utils/SecondaryStackNavigator');
+
 
 /**
  * Create the main navigator
@@ -22,10 +23,10 @@ const PrimaryStackNavigator = require('../utils/PrimaryStackNavigator');
  * @memberof MainNavigator
  */
 const MainNavigator = TabNavigator({
-  Galactica: { screen: PrimaryStackNavigator },
-  Raptor: { screen: TertiaryPageContainer }
+  Main: { screen: PrimaryStackNavigator },
+  Raptor: { screen: SecondaryStackNavigator }
 }, {
-  initialRouteName: 'Galactica',
+  initialRouteName: 'Main',
   lazy: false,
   swipeEnabled: true
 });

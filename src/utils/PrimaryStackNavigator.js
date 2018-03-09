@@ -9,8 +9,9 @@
 
 const StackNavigator = require('react-navigation').StackNavigator;
 
-const MainPageContainer = require('../containers/MainPageContainer');
-const SecondaryPageContainer = require('../containers/SecondaryPageContainer');
+// const PageContainer1 = require('../containers/PageContainer1');
+const SideNavigator = require('./SideNavigator');
+const PageContainer2 = require('../containers/PageContainer2');
 
 /**
  * Create the main navigator
@@ -21,8 +22,8 @@ const SecondaryPageContainer = require('../containers/SecondaryPageContainer');
  * @memberof PrimaryStackNavigator
  */
 const PrimaryStackNavigator = StackNavigator({
-  Galactica: { screen: MainPageContainer },
-  Pegasus: { screen: SecondaryPageContainer }
+  Galactica: { screen: SideNavigator },
+  Pegasus: { screen: PageContainer2 }
 }, {
   initialRouteName: 'Galactica'
 });

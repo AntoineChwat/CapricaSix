@@ -15,7 +15,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const SecondaryPageContainer = createReactClass({
+const PageContainer2 = createReactClass({
   render() {
     console.log('here we go!');
     return (
@@ -33,7 +33,7 @@ const SecondaryPageContainer = createReactClass({
     );
   }
 });
-SecondaryPageContainer.navigationOptions = {
+PageContainer2.navigationOptions = {
   title: 'Pegasus'
 };
 
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = SecondaryPageContainer;
+module.exports = PageContainer2;

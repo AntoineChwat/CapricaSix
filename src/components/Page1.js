@@ -18,7 +18,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const MainPage = createReactClass({
+const Page1 = createReactClass({
   propTypes: {
     navigate: PropTypes.func
   },
@@ -43,7 +43,7 @@ const MainPage = createReactClass({
     );
   }
 });
-MainPage.navigationOptions = {
+Page1.navigationOptions = {
   title: 'Galactica'
 };
 
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = MainPage;
+module.exports = Page1;
