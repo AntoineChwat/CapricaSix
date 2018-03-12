@@ -29,7 +29,7 @@ const App = require('../components/App');
  * @memberof AppContainer
  */
 const mapStateToProps = (state) => ({
-  tabNav: state.tabNav
+  nav: state.nav
 });
 
 const AppWithNavigationState = connect(mapStateToProps)(App);

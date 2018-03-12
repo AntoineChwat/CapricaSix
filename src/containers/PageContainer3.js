@@ -15,7 +15,7 @@ const Page3 = require('../components/Page3');
  */
 const mapStateToProps = function(state) {
   return {
-    tabNav: state.tabNav
+    nav: state.nav
   };
 };
 

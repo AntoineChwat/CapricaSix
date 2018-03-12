@@ -9,7 +9,6 @@
 
 const TabNavigator = require('react-navigation').TabNavigator;
 
-// const PageContainer3 = require('../containers/PageContainer3');
 const PrimaryStackNavigator = require('../utils/PrimaryStackNavigator');
 const SecondaryStackNavigator = require('../utils/SecondaryStackNavigator');
 
@@ -18,7 +17,7 @@ const SecondaryStackNavigator = require('../utils/SecondaryStackNavigator');
  * Create the main navigator
  *
  * @param    {Object} views   the pages in your application
- * @param    {Object} options options allowed by TabNavigator
+ * @param    {Object} options options allowed by navigator
  *
  * @memberof MainNavigator
  */

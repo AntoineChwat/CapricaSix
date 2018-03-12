@@ -20,7 +20,8 @@ const instructions = Platform.select({
 
 const Page1 = createReactClass({
   propTypes: {
-    navigate: PropTypes.func
+    navigate: PropTypes.func,
+    toggleDrawer: PropTypes.func
   },
   render() {
     return (
@@ -38,6 +39,11 @@ const Page1 = createReactClass({
           onPress={this.props.navigate}
           color='#48BBEC'
           title='Go'
+        />
+        <Button
+          onPress={this.props.toggleDrawer}
+          color='#48BBEC'
+          title='Drawer'
         />
       </View>
     );

@@ -9,7 +9,7 @@
 
 const combineReducers = require('redux').combineReducers;
 
-const tabNavigatorReducer = require('./tabNavigatorReducer');
+const navigatorReducer = require('./navigatorReducer');
 // const stackNavigatorReducer1 = require('./stackNavigatorReducer1');
 
 /**
@@ -22,7 +22,7 @@ const tabNavigatorReducer = require('./tabNavigatorReducer');
  * @memberof rootReducer
  */
 const rootReducer = combineReducers({
-  tabNav: tabNavigatorReducer
+  nav: navigatorReducer
   // stackNav1: stackNavigatorReducer1
 });
 

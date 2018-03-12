@@ -19,31 +19,31 @@ const ReactNavigationReduxHelpers = require('react-navigation-redux-helpers');
 const createReduxBoundAddListener = ReactNavigationReduxHelpers.createReduxBoundAddListener;
 const createReactNavigationReduxMiddleware = ReactNavigationReduxHelpers.createReactNavigationReduxMiddleware;
 
-const MainNavigator = require('../utils/MainNavigator');
+const SideNavigator = require('../utils/SideNavigator');
 
 createReactNavigationReduxMiddleware(
   'root',
-  state => state.tabNav,
+  state => state.nav,
 );
 const addListener = createReduxBoundAddListener('root');
 
 const App = createReactClass({
   propTypes: {
     dispatch: PropTypes.func,
-    tabNav: PropTypes.shape()
+    nav: PropTypes.shape()
   },
   /**
    * The render returns our app navigator's default view
    *
-   * @returns {MainNavigator} Our app's tab navigator
+   * @returns {SideNavigator} Our app's tab navigator
    *
    * @memberof App
    */
   render() {
     return (
-      <MainNavigator navigation={addNavigationHelpers({
+      <SideNavigator navigation={addNavigationHelpers({
         dispatch: this.props.dispatch,
-        state: this.props.tabNav,
+        state: this.props.nav,
         addListener: addListener
       })} />
     );

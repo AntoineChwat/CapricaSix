@@ -20,8 +20,7 @@ const instructions = Platform.select({
 
 const Page3 = createReactClass({
   propTypes: {
-    navigate: PropTypes.func,
-    drawer: PropTypes.func
+    navigate: PropTypes.func
   },
   render() {
     return (

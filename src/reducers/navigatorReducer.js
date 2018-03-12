@@ -3,11 +3,11 @@
  *
  * @author        Antoine Chwat
  *
- * @namespace     tabNavigatorReducer
+ * @namespace     navigatorReducer
  */
 'use strict';
 
-const MainNavigator = require('../utils/MainNavigator');
+const MainNavigator = require('../utils/SideNavigator');
 
 const router = MainNavigator.router;
 const initialNavState = router.getStateForAction({});
@@ -20,11 +20,12 @@ const initialNavState = router.getStateForAction({});
  *
  * @returns  {Object} The updated navigation state
  *
- * @memberof tabNavigatorReducer
+ * @memberof navigatorReducer
  */
-const tabNavigatorReducer = (state = initialNavState, action) => {
+const navigatorReducer = (state = initialNavState, action) => {
+  console.log(state);
   const nextState = MainNavigator.router.getStateForAction(action, state);
   return nextState || state;
 };
 
-module.exports = tabNavigatorReducer;
+module.exports = navigatorReducer;
