@@ -1,28 +1,22 @@
 const NavigationActions = require('react-navigation').NavigationActions;
 
-const dataLoaded = function() {
+const dataLoaded = function(results) {
   return {
     type: 'DATA_LOADED',
-    text: 'Welcome to my sex dungeon'
+    results: results
   };
 };
 
-
 const loadData = function() {
-  const aPromise = new Promise(
-    function (resolve, reject) {
-      setTimeout(function() {
-        resolve();
-      }, 3000);
-    }
-  );
   return (dispatch) => {
-    aPromise
-    .then(function() {
-        dispatch(dataLoaded());
+    fetch('https://api.nestoria.co.uk/api?country=uk&pretty=1&encoding=json&listing_type=buy&action=search_listings&page=1&place_name=London')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json.response);
+        dispatch(dataLoaded(json.response));
         dispatch(NavigationActions.navigate({routeName: 'SideNavigator' }));
       });
-    };
+  };
 };
 
 module.exports = {

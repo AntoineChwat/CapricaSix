@@ -17,7 +17,6 @@ const instructions = Platform.select({
 
 const PageContainer2 = createReactClass({
   render() {
-    console.log('here we go!');
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

@@ -15,7 +15,7 @@ const Page1 = require('../components/Page1');
  */
 const mapStateToProps = function(state) {
   return {
-    nav: state.nav
+    results: state.main.results
   };
 };
 
@@ -30,11 +30,8 @@ const mapStateToProps = function(state) {
  */
 const mapDispatchToProps = function(dispatch) {
   return {
-    navigate: function() {
-      dispatch(NavigationActions.navigate({routeName: 'Pegasus' }));
-    },
-    toggleDrawer: function() {
-      dispatch(NavigationActions.navigate({routeName: 'DrawerToggle'}));
+    onItemPressed: function() {
+      dispatch(NavigationActions.navigate({routeName: 'Pegasus'}));
     }
   };
 };

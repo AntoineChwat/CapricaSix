@@ -1,75 +1,84 @@
+'use strict';
+
 const React = require('react');
 
 const ReactNative = require('react-native');
-const Platform = ReactNative.Platform;
-const StyleSheet = ReactNative.StyleSheet;
-const Text = ReactNative.Text;
-const View = ReactNative.View;
-const Button = ReactNative.Button;
-
-const createReactClass = require('create-react-class');
+const FlatList = ReactNative.FlatList;
 
 const PropTypes = require('prop-types');
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu'
-});
+const createReactClass = require('create-react-class');
+
+const ListItem = require('./ListItem');
 
 const Page1 = createReactClass({
   propTypes: {
-    navigate: PropTypes.func,
-    toggleDrawer: PropTypes.func
+    results: PropTypes.object.isRequired,
+    onItemPressed: PropTypes.func.isRequired
   },
-  render() {
+
+  /**
+   * Method to extract a unique key from an item at a specific index
+   *
+   * @param    {Object} item  item to extract key from
+   * @param    {number} index index associated to item
+   *
+   * @returns  {string}       The extracted key
+   *
+   * @memberof Page1
+   */
+  _keyExtractor: function(item, index) {
+    return index.toString();
+  },
+
+  /**
+   * Method to render a list item for each element in the results
+   *
+   * @param    {Object} item item taken from the results by the flat list
+   *
+   * @returns  {ListItem}    a list item
+   *
+   * @memberof Page1
+   */
+  _renderItem: function({item}) {
+    const self = this;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-        <Button
-          onPress={this.props.navigate}
-          color='#48BBEC'
-          title='Go'
-        />
-        <Button
-          onPress={this.props.toggleDrawer}
-          color='#48BBEC'
-          title='Drawer'
-        />
-      </View>
+      <ListItem
+        item={item}
+        onPressItem={self._onPressItem}
+      />
+    );
+  },
+
+  /**
+   * Calls a function from its container to handle a touchable highlight press
+   *
+   * @memberof Page1
+   */
+  _onPressItem: function(index, item) {
+    this.props.onItemPressed(item);
+  },
+
+  /**
+   * The render displays a flat list which shows all the results returned
+   *
+   * @returns  {FlatList} A list of results
+   *
+   * @memberof Page1
+   */
+  render: function() {
+    const params = this.props.results;
+    return (
+      <FlatList
+        data={params.listings}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
     );
   }
 });
 Page1.navigationOptions = {
-  title: 'Galactica'
+  title: 'Results'
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FF0000'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-});
 
 module.exports = Page1;

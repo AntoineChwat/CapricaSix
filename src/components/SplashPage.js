@@ -18,12 +18,14 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const Page1 = createReactClass({
+const SplashPage = createReactClass({
   propTypes: {
-    load: PropTypes.func
+    load: PropTypes.func,
+    navigate: PropTypes.func,
+    results: PropTypes.shape()
   },
   componentDidMount() {
-    console.log('HEY DICKHEAD');
+    // console.log('HEY DICKHEAD');
     this.props.load();
   },
   render() {
@@ -47,7 +49,7 @@ const Page1 = createReactClass({
     );
   }
 });
-Page1.navigationOptions = {
+SplashPage.navigationOptions = {
   title: 'Galactica'
 };
 
@@ -70,4 +72,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Page1;
+module.exports = SplashPage;
