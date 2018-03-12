@@ -32,6 +32,9 @@ const mapDispatchToProps = function(dispatch) {
   return {
     navigate: function() {
       dispatch(NavigationActions.navigate({ routeName: 'Viper' }));
+    },
+    back: function() {
+      dispatch(NavigationActions.back());
     }
   };
 };

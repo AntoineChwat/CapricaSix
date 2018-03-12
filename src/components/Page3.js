@@ -20,7 +20,8 @@ const instructions = Platform.select({
 
 const Page3 = createReactClass({
   propTypes: {
-    navigate: PropTypes.func
+    navigate: PropTypes.func,
+    back: PropTypes.func
   },
   render() {
     return (
@@ -38,6 +39,11 @@ const Page3 = createReactClass({
           onPress={this.props.navigate}
           color='#48BBEC'
           title='Go'
+        />
+        <Button
+          onPress={this.props.back}
+          color='#48BBEC'
+          title='Back'
         />
       </View>
     );
