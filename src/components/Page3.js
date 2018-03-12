@@ -44,7 +44,6 @@ const Page3 = createReactClass({
   }
 });
 Page3.navigationOptions = {
-  drawerLabel: 'Drawer Item 1',
   title: 'Raptor'
 };
 
