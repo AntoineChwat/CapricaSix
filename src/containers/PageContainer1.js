@@ -34,7 +34,7 @@ const mapDispatchToProps = function(dispatch) {
       dispatch(NavigationActions.navigate({routeName: 'Pegasus' }));
     },
     toggleDrawer: function() {
-      dispatch( NavigationActions.navigate({routeName: 'DrawerToggle'}));
+      dispatch(NavigationActions.navigate({routeName: 'DrawerToggle'}));
     }
   };
 };

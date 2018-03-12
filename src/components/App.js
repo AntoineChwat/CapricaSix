@@ -19,7 +19,7 @@ const ReactNavigationReduxHelpers = require('react-navigation-redux-helpers');
 const createReduxBoundAddListener = ReactNavigationReduxHelpers.createReduxBoundAddListener;
 const createReactNavigationReduxMiddleware = ReactNavigationReduxHelpers.createReactNavigationReduxMiddleware;
 
-const SideNavigator = require('../utils/SideNavigator');
+const SideNavigator = require('../utils/RootNavigator');
 
 createReactNavigationReduxMiddleware(
   'root',

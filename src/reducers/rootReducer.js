@@ -9,8 +9,8 @@
 
 const combineReducers = require('redux').combineReducers;
 
+const mainReducer = require('./mainReducer');
 const navigatorReducer = require('./navigatorReducer');
-// const stackNavigatorReducer1 = require('./stackNavigatorReducer1');
 
 /**
  * We combine our auxilliary reducers here
@@ -22,8 +22,8 @@ const navigatorReducer = require('./navigatorReducer');
  * @memberof rootReducer
  */
 const rootReducer = combineReducers({
+  main: mainReducer,
   nav: navigatorReducer
-  // stackNav1: stackNavigatorReducer1
 });
 
 module.exports = rootReducer;

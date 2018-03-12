@@ -5,8 +5,11 @@ const Platform = ReactNative.Platform;
 const StyleSheet = ReactNative.StyleSheet;
 const Text = ReactNative.Text;
 const View = ReactNative.View;
+const Button = ReactNative.Button;
 
 const createReactClass = require('create-react-class');
+
+const PropTypes = require('prop-types');
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -15,7 +18,14 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const PageContainer4 = createReactClass({
+const Page1 = createReactClass({
+  propTypes: {
+    load: PropTypes.func
+  },
+  componentDidMount() {
+    console.log('HEY DICKHEAD');
+    this.props.load();
+  },
   render() {
     return (
       <View style={styles.container}>
@@ -28,12 +38,17 @@ const PageContainer4 = createReactClass({
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Button
+          onPress={this.props.load}
+          color='#48BBEC'
+          title='Load'
+        />
       </View>
     );
   }
 });
-PageContainer4.navigationOptions = {
-  title: 'Viper'
+Page1.navigationOptions = {
+  title: 'Galactica'
 };
 
 const styles = StyleSheet.create({
@@ -55,4 +70,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = PageContainer4;
+module.exports = Page1;
