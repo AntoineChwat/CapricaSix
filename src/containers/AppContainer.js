@@ -15,7 +15,7 @@ const ReactRedux = require('react-redux');
 const Provider = ReactRedux.Provider;
 const connect = ReactRedux.connect;
 
-const store = require('../store');
+const store = require('../store').store;
 
 const App = require('../components/App');
 

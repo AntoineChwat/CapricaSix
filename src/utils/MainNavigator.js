@@ -25,9 +25,9 @@ const MainNavigator = TabNavigator({
   Main: { screen: PrimaryStackNavigator },
   Raptor: { screen: SecondaryStackNavigator }
 }, {
-  initialRouteName: 'Main',
-  lazy: false,
-  swipeEnabled: true
+  initialRouteName: 'Main'
+  // lazy: false,
+  // swipeEnabled: true
 });
 
 module.exports = MainNavigator;

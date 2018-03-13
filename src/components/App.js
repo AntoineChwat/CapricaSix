@@ -13,7 +13,8 @@ const Platform = require('react-native').Platform;
 
 const NavigationActions = require('react-navigation').NavigationActions;
 
-const store = require('../store');
+const store = require('../store').store;
+const addListener = require('../store').addListener;
 
 const createReactClass = require('create-react-class');
 
@@ -22,18 +23,8 @@ const PropTypes = require('prop-types');
 const ReactNavigation = require ('react-navigation');
 const addNavigationHelpers = ReactNavigation.addNavigationHelpers;
 
-const ReactNavigationReduxHelpers = require('react-navigation-redux-helpers');
-const createReduxBoundAddListener = ReactNavigationReduxHelpers.createReduxBoundAddListener;
-const createReactNavigationReduxMiddleware = ReactNavigationReduxHelpers.createReactNavigationReduxMiddleware;
-
 const RootNavigator = require('../utils/SideNavigator');
 const SplashPageContainer = require('../containers/SplashPageContainer');
-
-createReactNavigationReduxMiddleware(
-  'root',
-  state => state.nav,
-);
-const addListener = createReduxBoundAddListener('root');
 
 const App = createReactClass({
   propTypes: {
