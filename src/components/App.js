@@ -8,6 +8,9 @@
 
 const React = require('react');
 
+const Linking = require('react-native').Linking;
+const Platform = require('react-native').Platform;
+
 const createReactClass = require('create-react-class');
 
 const PropTypes = require('prop-types');
@@ -33,6 +36,24 @@ const App = createReactClass({
     dispatch: PropTypes.func,
     nav: PropTypes.shape(),
     isLoading: PropTypes.bool
+  },
+
+  componentDidMount() { // B
+    if (Platform.OS === 'android') {
+      Linking.getInitialURL().then(url => {
+        console.log(url);
+      });
+    } else {
+      Linking.addEventListener('url', this.handleOpenURL);
+    }
+  },
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleOpenURL);
+  },
+
+  handleOpenURL(event) {
+    console.log(event.url);
   },
 
   /**
