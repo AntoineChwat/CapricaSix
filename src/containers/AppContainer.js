@@ -29,7 +29,8 @@ const App = require('../components/App');
  * @memberof AppContainer
  */
 const mapStateToProps = (state) => ({
-  nav: state.nav
+  nav: state.nav,
+  isLoading: state.main.isLoading
 });
 
 const AppWithNavigationState = connect(mapStateToProps)(App);

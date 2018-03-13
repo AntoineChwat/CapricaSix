@@ -19,7 +19,8 @@ const ReactNavigationReduxHelpers = require('react-navigation-redux-helpers');
 const createReduxBoundAddListener = ReactNavigationReduxHelpers.createReduxBoundAddListener;
 const createReactNavigationReduxMiddleware = ReactNavigationReduxHelpers.createReactNavigationReduxMiddleware;
 
-const RootNavigator = require('../utils/RootNavigator');
+const RootNavigator = require('../utils/SideNavigator');
+const SplashPageContainer = require('../containers/SplashPageContainer');
 
 createReactNavigationReduxMiddleware(
   'root',
@@ -30,8 +31,10 @@ const addListener = createReduxBoundAddListener('root');
 const App = createReactClass({
   propTypes: {
     dispatch: PropTypes.func,
-    nav: PropTypes.shape()
+    nav: PropTypes.shape(),
+    isLoading: PropTypes.bool
   },
+
   /**
    * The render returns our app navigator's default view
    *
@@ -40,12 +43,15 @@ const App = createReactClass({
    * @memberof App
    */
   render() {
+    console.log('isLoading ' + this.props.isLoading);
     return (
-      <RootNavigator navigation={addNavigationHelpers({
-        dispatch: this.props.dispatch,
-        state: this.props.nav,
-        addListener: addListener
-      })} />
+      this.props.isLoading ?
+        <SplashPageContainer/> :
+        <RootNavigator navigation={addNavigationHelpers({
+          dispatch: this.props.dispatch,
+          state: this.props.nav,
+          addListener: addListener
+        })} />
     );
   }
 });

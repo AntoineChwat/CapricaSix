@@ -1,4 +1,4 @@
-const NavigationActions = require('react-navigation').NavigationActions;
+// const NavigationActions = require('react-navigation').NavigationActions;
 
 const dataLoaded = function(results) {
   return {
@@ -14,7 +14,7 @@ const loadData = function() {
       .then(json => {
         console.log(json.response);
         dispatch(dataLoaded(json.response));
-        dispatch(NavigationActions.navigate({routeName: 'SideNavigator' }));
+        // dispatch(NavigationActions.navigate({routeName: 'SideNavigator' }));
       });
   };
 };

@@ -25,7 +25,6 @@ const SplashPage = createReactClass({
     results: PropTypes.shape()
   },
   componentDidMount() {
-    // console.log('HEY DICKHEAD');
     this.props.load();
   },
   render() {

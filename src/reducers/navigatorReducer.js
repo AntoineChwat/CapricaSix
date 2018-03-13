@@ -7,7 +7,7 @@
  */
 'use strict';
 
-const MainNavigator = require('../utils/RootNavigator');
+const MainNavigator = require('../utils/SideNavigator');
 
 const router = MainNavigator.router;
 const initialNavState = router.getStateForAction({});
