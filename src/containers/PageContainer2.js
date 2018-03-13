@@ -1,58 +1,24 @@
-const React = require('react');
+'use strict';
 
-const ReactNative = require('react-native');
-const Platform = ReactNative.Platform;
-const StyleSheet = ReactNative.StyleSheet;
-const Text = ReactNative.Text;
-const View = ReactNative.View;
+const connect = require('react-redux').connect;
 
-const createReactClass = require('create-react-class');
+const Page2 = require('../components/Page2');
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu'
-});
-
-const PageContainer2 = createReactClass({
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
-});
-PageContainer2.navigationOptions = {
-  title: 'Pegasus'
+/**
+ * This function maps the useful part of our application's state to Page2' props
+ *
+ * @param    {Object} state the state of our application
+ *
+ * @returns  {Object} The item that needs to be rendered
+ *
+ * @memberof Page2Container
+ */
+const mapStateToProps = function(state) {
+  return {
+    item: state.main.item
+  };
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0000FF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-});
+const Page2Container = connect(mapStateToProps)(Page2);
 
-module.exports = PageContainer2;
+module.exports = Page2Container;

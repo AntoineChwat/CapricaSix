@@ -19,7 +19,15 @@ const loadData = function() {
   };
 };
 
+const returnItem = function(item) {
+  return {
+    type: 'RETURN_ITEM',
+    item
+  };
+};
+
 module.exports = {
   loadData,
-  dataLoaded
+  dataLoaded,
+  returnItem
 };

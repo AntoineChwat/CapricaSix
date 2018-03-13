@@ -1,6 +1,7 @@
 const initialState = {
   isLoading: true,
-  results: {}
+  results: {},
+  item: {}
 };
 
 const mainReducer = function(state = initialState, action) {
@@ -11,6 +12,12 @@ const mainReducer = function(state = initialState, action) {
         Object.assign({}, state, {
           isLoading: false,
           results: Object.assign({}, action.results)
+        })
+      );
+    case 'RETURN_ITEM':
+      return (
+        Object.assign({}, state, {
+          item: Object.assign({}, action.item)
         })
       );
     default:

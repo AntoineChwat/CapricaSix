@@ -2,6 +2,8 @@ const NavigationActions = require('react-navigation').NavigationActions;
 
 const connect = require('react-redux').connect;
 
+const actions = require('../actions/actions');
+const returnItem = actions.returnItem;
 const Page1 = require('../components/Page1');
 
 /**
@@ -30,7 +32,8 @@ const mapStateToProps = function(state) {
  */
 const mapDispatchToProps = function(dispatch) {
   return {
-    onItemPressed: function() {
+    onItemPressed: function(item) {
+      dispatch(returnItem(item));
       dispatch(NavigationActions.navigate({routeName: 'Pegasus'}));
     }
   };
