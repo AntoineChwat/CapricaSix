@@ -34,12 +34,19 @@ const App = createReactClass({
   },
 
   componentDidMount() {
+    console.log('Component successfully mounted');
     if (Platform.OS === 'android') {
       Linking.getInitialURL().then(url => {
         this.routeAction(url);
       });
     } else {
+      console.log('Correctly added event listener');
       Linking.addEventListener('url', this.handleOpenURL);
+      Linking.getInitialURL().then((url) => {
+        if (url) {
+          this.routeAction(url);
+        }
+      });
     }
   },
 
@@ -48,13 +55,14 @@ const App = createReactClass({
   },
 
   handleOpenURL(event) {
+    console.log('OK');
     this.routeAction(event.url);
   },
 
   routeAction(url) {
     var nextRoute = url.split('//')[1];
     console.log('HELLO DAVE: ' + nextRoute);
-    store.dispatch(NavigationActions.navigate({routeName: nextRoute}));
+    console.log(store.dispatch(NavigationActions.navigate({routeName: nextRoute})));
   },
 
   /**
