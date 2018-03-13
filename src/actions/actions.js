@@ -12,7 +12,6 @@ const loadData = function() {
     fetch('https://api.nestoria.co.uk/api?country=uk&pretty=1&encoding=json&listing_type=buy&action=search_listings&page=1&place_name=London')
       .then(response => response.json())
       .then(json => {
-        console.log(json.response);
         dispatch(dataLoaded(json.response));
         // dispatch(NavigationActions.navigate({routeName: 'SideNavigator' }));
       });

@@ -11,6 +11,10 @@ const React = require('react');
 const Linking = require('react-native').Linking;
 const Platform = require('react-native').Platform;
 
+const NavigationActions = require('react-navigation').NavigationActions;
+
+const store = require('../store');
+
 const createReactClass = require('create-react-class');
 
 const PropTypes = require('prop-types');
@@ -38,10 +42,10 @@ const App = createReactClass({
     isLoading: PropTypes.bool
   },
 
-  componentDidMount() { // B
+  componentDidMount() {
     if (Platform.OS === 'android') {
       Linking.getInitialURL().then(url => {
-        console.log(url);
+        this.routeAction(url);
       });
     } else {
       Linking.addEventListener('url', this.handleOpenURL);
@@ -53,7 +57,13 @@ const App = createReactClass({
   },
 
   handleOpenURL(event) {
-    console.log(event.url);
+    this.routeAction(event.url);
+  },
+
+  routeAction(url) {
+    var nextRoute = url.split('//')[1];
+    console.log('HELLO DAVE: ' + nextRoute);
+    store.dispatch(NavigationActions.navigate({routeName: nextRoute}));
   },
 
   /**
@@ -64,7 +74,6 @@ const App = createReactClass({
    * @memberof App
    */
   render() {
-    console.log('isLoading ' + this.props.isLoading);
     return (
       this.props.isLoading ?
         <SplashPageContainer/> :

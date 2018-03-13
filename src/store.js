@@ -7,6 +7,8 @@ const thunk = require('redux-thunk').default;
 
 const rootReducer = require('./reducers/rootReducer');
 
+// MUST APPLY REACT NAVIGATION MIDDLEWARE
+
 const store = createStore(
   rootReducer,
   applyMiddleware(thunk)

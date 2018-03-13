@@ -7,7 +7,6 @@ const initialState = {
 const mainReducer = function(state = initialState, action) {
   switch (action.type) {
     case 'DATA_LOADED':
-      console.log('Updating isLoading');
       return (
         Object.assign({}, state, {
           isLoading: false,

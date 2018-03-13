@@ -24,7 +24,6 @@ const Page2 = createReactClass({
       url = 'https://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png';
     }
     var price = params.price_formatted;
-    console.log(price);
     if (typeof price != 'string' || price =='') {
       price = 'Unknown price';
     }
