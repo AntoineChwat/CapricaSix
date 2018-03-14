@@ -59,6 +59,11 @@ const App = createReactClass({
     Linking.removeEventListener('url', this.handleOpenURL);
   },
 
+  handleOpenURL(event) {
+    console.log('OK');
+    routeUrl(event.url);
+  },
+
   /**
    * The render returns our app navigator's default view
    *
