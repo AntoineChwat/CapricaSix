@@ -7,6 +7,7 @@ const StyleSheet = ReactNative.StyleSheet;
 const Image = ReactNative.Image;
 const View = ReactNative.View;
 const Text = ReactNative.Text;
+const Alert = ReactNative.Alert;
 
 const PropTypes = require('prop-types');
 
@@ -19,6 +20,14 @@ const Page2 = createReactClass({
 
   render: function() {
     const params = this.props.item;
+    console.log(params);
+    if (Object.keys(params).length === 0 && params.constructor === Object) {
+      Alert.alert(
+        'Warning',
+        'The property you are looking for was not found',
+        [{text: 'OK', onPress: () => {}}]
+      );
+    }
     var url = params.img_url;
     if (typeof url != 'string' || url =='') {
       url = 'https://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png';
