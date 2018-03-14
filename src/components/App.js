@@ -11,8 +11,6 @@ const React = require('react');
 const Linking = require('react-native').Linking;
 const Platform = require('react-native').Platform;
 
-const NavigationActions = require('react-navigation').NavigationActions;
-
 const store = require('../store').store;
 const addListener = require('../store').addListener;
 
@@ -25,6 +23,9 @@ const addNavigationHelpers = ReactNavigation.addNavigationHelpers;
 
 const RootNavigator = require('../utils/SideNavigator');
 const SplashPageContainer = require('../containers/SplashPageContainer');
+const routeUrl = require('../utils/routeUrl');
+
+const loadData = require('../actions/actions').loadData;
 
 const App = createReactClass({
   propTypes: {
@@ -34,35 +35,28 @@ const App = createReactClass({
   },
 
   componentDidMount() {
-    console.log('Component successfully mounted');
-    if (Platform.OS === 'android') {
-      Linking.getInitialURL().then(url => {
-        this.routeAction(url);
-      });
-    } else {
-      console.log('Correctly added event listener');
-      Linking.addEventListener('url', this.handleOpenURL);
-      Linking.getInitialURL().then((url) => {
-        if (url) {
-          this.routeAction(url);
-        }
-      });
-    }
+    store.dispatch(loadData()).then(() => {
+      console.log('Component successfully mounted');
+      if (Platform.OS === 'android') {
+        Linking.getInitialURL().then(url => {
+          if (url) {
+            routeUrl(url);
+          }
+        });
+      } else {
+        console.log('Correctly added event listener');
+        Linking.addEventListener('url', this.handleOpenURL);
+        Linking.getInitialURL().then((url) => {
+          if (url) {
+            routeUrl(url);
+          }
+        });
+      }
+    });
   },
 
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
-  },
-
-  handleOpenURL(event) {
-    console.log('OK');
-    this.routeAction(event.url);
-  },
-
-  routeAction(url) {
-    var nextRoute = url.split('//')[1];
-    console.log('HELLO DAVE: ' + nextRoute);
-    console.log(store.dispatch(NavigationActions.navigate({routeName: nextRoute})));
   },
 
   /**

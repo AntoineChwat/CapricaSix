@@ -24,9 +24,9 @@ const SplashPage = createReactClass({
     navigate: PropTypes.func,
     results: PropTypes.shape()
   },
-  componentDidMount() {
-    this.props.load();
-  },
+  // componentDidMount() {
+  //   this.props.load();
+  // },
   render() {
     return (
       <View style={styles.container}>

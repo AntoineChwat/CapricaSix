@@ -11,6 +11,7 @@ const StackNavigator = require('react-navigation').StackNavigator;
 
 const PageContainer1 = require('../containers/PageContainer1');
 const PageContainer2 = require('../containers/PageContainer2');
+const MoreResultsContainer = require('../containers/MoreResultsContainer');
 
 /**
  * Create the main navigator
@@ -21,10 +22,11 @@ const PageContainer2 = require('../containers/PageContainer2');
  * @memberof PrimaryStackNavigator
  */
 const PrimaryStackNavigator = StackNavigator({
-  Galactica: { screen: PageContainer1 },
-  Pegasus: { screen: PageContainer2 }
+  Results: { screen: PageContainer1 },
+  Property: { screen: PageContainer2 },
+  MoreResults: {screen: MoreResultsContainer}
 }, {
-  initialRouteName: 'Galactica'
+  initialRouteName: 'Results'
 });
 
 module.exports = PrimaryStackNavigator;

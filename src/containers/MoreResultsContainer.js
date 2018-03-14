@@ -3,8 +3,8 @@ const NavigationActions = require('react-navigation').NavigationActions;
 const connect = require('react-redux').connect;
 
 const actions = require('../actions/actions');
-const returnItem = actions.returnItem;
-const Page1 = require('../components/Page1');
+const returnItem = actions.returnNewItem;
+const MoreResults = require('../components/MoreResults');
 
 /**
  * This function maps the useful part of our application's state to our Main Page's props
@@ -17,7 +17,7 @@ const Page1 = require('../components/Page1');
  */
 const mapStateToProps = function(state) {
   return {
-    results: state.main.results
+    results: state.main.moreResults
   };
 };
 
@@ -34,14 +34,14 @@ const mapDispatchToProps = function(dispatch) {
   return {
     onItemPressed: function(item) {
       dispatch(returnItem(item));
-      dispatch(NavigationActions.navigate({routeName: 'Property'}));
+      dispatch(NavigationActions.navigate({routeName: 'NewProperty'}));
     }
   };
 };
 
-const PageContainer1 = connect(
+const MoreResultsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Page1);
+)(MoreResults);
 
-module.exports = PageContainer1;
+module.exports = MoreResultsContainer;
