@@ -2,14 +2,47 @@ const NavigationActions = require('react-navigation').NavigationActions;
 
 const store = require('../store').store;
 
-const loadMoreData = require('../actions/actions').loadMoreData;
+const actions = require('../actions/actions');
+const loadMoreData = actions.loadMoreData;
+const goToProperty = actions.goToProperty;
+const goToNewProperty = actions.goToNewProperty;
 
 const routeUrl = function(url) {
   var nextRoute = url.split('//')[1];
-  if (nextRoute == 'MoreResults') {
-    store.dispatch(loadMoreData());
-  } else {
-    console.log(store.dispatch(NavigationActions.navigate({routeName: nextRoute})));
+  store.dispatch(NavigationActions.reset(
+    {
+      index: 0,
+      actions: [
+        NavigationActions.navigate({routeName: 'Results'})
+      ]
+    }
+  ));
+  switch (nextRoute) {
+    case 'Property':
+      store.dispatch(goToProperty());
+      break;
+    case 'MoreResults':
+    store.dispatch(goToProperty())
+      .then(() => {
+        store.dispatch(loadMoreData());
+      })
+      .catch(() => {
+        console.log('Exception MOFO');
+      });
+      break;
+    case 'NewProperty':
+      store.dispatch(goToProperty())
+        .then(() => {
+          store.dispatch(loadMoreData());
+        }).then(() => {
+          store.dispatch(goToNewProperty());
+        })
+        .catch(() => {
+          console.log('Exception MOFO');
+        });
+        break;
+    default:
+      store.dispatch(NavigationActions.navigate({routeName: nextRoute}));
   }
 };
 

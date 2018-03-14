@@ -13,7 +13,7 @@ const PropTypes = require('prop-types');
 
 const createReactClass = require('create-react-class');
 
-const Page2 = createReactClass({
+const NewProperty = createReactClass({
   propTypes: {
     item: PropTypes.object.isRequired
   },
@@ -67,7 +67,7 @@ const Page2 = createReactClass({
     );
   }
 });
-Page2.navigationOptions = {
+NewProperty.navigationOptions = {
   title: 'Property'
 };
 
@@ -101,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Page2;
+module.exports = NewProperty;

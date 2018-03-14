@@ -36,7 +36,6 @@ const App = createReactClass({
 
   componentDidMount() {
     store.dispatch(loadData()).then(() => {
-      console.log('Component successfully mounted');
       if (Platform.OS === 'android') {
         Linking.getInitialURL().then(url => {
           if (url) {
@@ -44,7 +43,6 @@ const App = createReactClass({
           }
         });
       } else {
-        console.log('Correctly added event listener');
         Linking.addEventListener('url', this.handleOpenURL);
         Linking.getInitialURL().then((url) => {
           if (url) {
@@ -60,7 +58,6 @@ const App = createReactClass({
   },
 
   handleOpenURL(event) {
-    console.log('OK');
     routeUrl(event.url);
   },
 

@@ -1,7 +1,6 @@
 const NavigationActions = require('react-navigation').NavigationActions;
 
 const dataLoaded = function(results) {
-  // console.log(results);
   return {
     type: 'DATA_LOADED',
     results: results
@@ -14,7 +13,6 @@ const loadData = function() {
       .then(response => response.json())
       .then(json => {
         dispatch(dataLoaded(json.response));
-        // dispatch(NavigationActions.navigate({routeName: 'SideNavigator' }));
       });
   };
 };
@@ -32,20 +30,7 @@ const loadMoreData = function() {
       .then(response => response.json())
       .then(json => {
         dispatch(moreDataLoaded(json.response));
-        var resultFound = false;
-        for (var i = 0; i < json.response.listings.length; i++) {
-          console.log(getState().main.results.listings[i].price);
-          if (getState().main.results.listings[i].price == 5750000) {
-            resultFound = true;
-            dispatch(returnItem(getState().main.results.listings[i]));
-            dispatch(NavigationActions.navigate({routeName: 'Property'}));
-            dispatch(NavigationActions.navigate({routeName: 'MoreResults' }));
-            break;
-          }
-        }
-        if (!resultFound) {
-          dispatch(NavigationActions.navigate({routeName: 'Property'}));
-        }
+        dispatch(NavigationActions.navigate({routeName: 'MoreResults' }));
       });
   };
 };
@@ -64,11 +49,50 @@ const returnNewItem = function(item) {
   };
 };
 
+const goToProperty = function() {
+  return (dispatch, getState) => {
+    var resultFound = false;
+    for (var i = 0; i < getState().main.results.listings.length; i++) {
+      if (getState().main.results.listings[i].price == 1750000) {
+        resultFound = true;
+        dispatch(returnItem(getState().main.results.listings[i]));
+        break;
+      }
+    }
+    dispatch(NavigationActions.navigate({routeName: 'Property'}));
+    if (resultFound) {
+      return Promise.resolve();
+    }
+    return Promise.reject();
+  };
+};
+
+const goToNewProperty = function() {
+  return (dispatch, getState) => {
+    var resultFound = false;
+    for (var i = 0; i < getState().main.moreResults.listings.length; i++) {
+      if (getState().main.moreResults.listings[i].price == 155000) {
+        resultFound = true;
+        dispatch(returnNewItem(getState().main.moreResults.listings[i]));
+        break;
+      }
+    }
+    console.log('Done');
+    dispatch(NavigationActions.navigate({routeName: 'NewProperty'}));
+    if (resultFound) {
+      return Promise.resolve();
+    }
+    return Promise.reject();
+  };
+};
+
 module.exports = {
   loadMoreData,
   moreDataLoaded,
   loadData,
   dataLoaded,
   returnItem,
-  returnNewItem
+  returnNewItem,
+  goToProperty,
+  goToNewProperty
 };

@@ -12,6 +12,7 @@ const StackNavigator = require('react-navigation').StackNavigator;
 const PageContainer1 = require('../containers/PageContainer1');
 const PageContainer2 = require('../containers/PageContainer2');
 const MoreResultsContainer = require('../containers/MoreResultsContainer');
+const NewPropertyContainer = require('../containers/NewPropertyContainer');
 
 /**
  * Create the main navigator
@@ -24,7 +25,8 @@ const MoreResultsContainer = require('../containers/MoreResultsContainer');
 const PrimaryStackNavigator = StackNavigator({
   Results: { screen: PageContainer1 },
   Property: { screen: PageContainer2 },
-  MoreResults: {screen: MoreResultsContainer}
+  MoreResults: {screen: MoreResultsContainer},
+  NewProperty: {screen: NewPropertyContainer}
 }, {
   initialRouteName: 'Results'
 });
