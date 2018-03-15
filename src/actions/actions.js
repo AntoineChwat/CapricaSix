@@ -18,20 +18,30 @@ const loadData = function() {
 };
 
 const moreDataLoaded = function(results) {
+  console.log('More Data Loaded');
   return {
     type: 'MORE_DATA_LOADED',
     results: results
   };
 };
 
-const loadMoreData = function() {
+const loadMoreData = function(chain, price) {
   return (dispatch, getState) => {
-    return fetch('https://api.nestoria.co.uk/api?country=uk&pretty=1&encoding=json&listing_type=buy&action=search_listings&page=1&place_name=Manchester')
-      .then(response => response.json())
+    console.log('Starting fetch');
+    fetch('https://api.nestoria.co.uk/api?country=uk&pretty=1&encoding=json&listing_type=buy&action=search_listings&page=1&place_name=Manchester')
+      .then(response => {
+        console.log('Fetch done');
+        return response.json();
+      })
       .then(json => {
+        console.log('Action dispatched');
         dispatch(moreDataLoaded(json.response));
         dispatch(NavigationActions.navigate({routeName: 'MoreResults' }));
-      });
+      }).then(function() {
+        if (chain) {
+          dispatch(goToNewProperty(price));
+        }
+      }).catch(()=>console.log('Exception'));
   };
 };
 
@@ -49,11 +59,11 @@ const returnNewItem = function(item) {
   };
 };
 
-const goToProperty = function() {
+const goToProperty = function(price) {
   return (dispatch, getState) => {
     var resultFound = false;
     for (var i = 0; i < getState().main.results.listings.length; i++) {
-      if (getState().main.results.listings[i].price == 1750000) {
+      if (getState().main.results.listings[i].price == price) {
         resultFound = true;
         dispatch(returnItem(getState().main.results.listings[i]));
         break;
@@ -67,11 +77,11 @@ const goToProperty = function() {
   };
 };
 
-const goToNewProperty = function() {
+const goToNewProperty = function(price) {
   return (dispatch, getState) => {
     var resultFound = false;
     for (var i = 0; i < getState().main.moreResults.listings.length; i++) {
-      if (getState().main.moreResults.listings[i].price == 155000) {
+      if (getState().main.moreResults.listings[i].price == price) {
         resultFound = true;
         dispatch(returnNewItem(getState().main.moreResults.listings[i]));
         break;
