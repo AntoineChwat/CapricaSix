@@ -27,6 +27,11 @@ const routeUrl = require('../utils/routeUrl');
 
 const loadData = require('../actions/actions').loadData;
 
+/**
+ * The application is rendered in this class
+ * @class
+ * @memberof App
+ */
 const App = createReactClass({
   propTypes: {
     dispatch: PropTypes.func,
@@ -34,38 +39,43 @@ const App = createReactClass({
     isLoading: PropTypes.bool
   },
 
+  /**
+   * This method starts when the component is mounted, it listens for deep links
+   * @memberof App
+   */
   componentDidMount() {
     store.dispatch(loadData()).then(() => {
-      if (Platform.OS === 'android') {
-        Linking.getInitialURL().then(url => {
-          if (url) {
-            routeUrl(url);
-          }
-        });
-      } else {
+      Linking.getInitialURL().then(url => {
+        if (url) {
+          routeUrl(url);
+        }
+      });
+      if (Platform.OS === 'ios') {
         Linking.addEventListener('url', this.handleOpenURL);
-        Linking.getInitialURL().then((url) => {
-          if (url) {
-            routeUrl(url);
-          }
-        });
       }
     });
   },
 
+  /**
+   * This method is called right before the component unmounts and it deletes the event listener
+   * @memberof App
+   */
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
   },
 
+  /**
+   * This method is called when iOS detects a link and the app is runiing in the background
+   * @param    {Object}    event the event detected by iOS
+   * @memberof App
+   */
   handleOpenURL(event) {
     routeUrl(event.url);
   },
 
   /**
-   * The render returns our app navigator's default view
-   *
-   * @returns {RootNavigator} Our app's tab navigator
-   *
+   * Here we render our loading screen if the app is loading or our drawer navigator if it is done loading
+   * @returns  {ReactElement} Our loading screen or our navigator
    * @memberof App
    */
   render() {

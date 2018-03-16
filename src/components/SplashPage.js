@@ -1,3 +1,12 @@
+/**
+ * @fileoverview  This component renders a sample white page
+ *
+ * @author        Antoine Chwat
+ *
+ * @namespace     SplashPage
+ */
+'use strict';
+
 const React = require('react');
 
 const ReactNative = require('react-native');
@@ -18,15 +27,23 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
+/**
+ * The sample page is rendered in this class
+ * @class
+ * @memberof SplashPage
+ */
 const SplashPage = createReactClass({
   propTypes: {
     load: PropTypes.func,
     navigate: PropTypes.func,
     results: PropTypes.shape()
   },
-  // componentDidMount() {
-  //   this.props.load();
-  // },
+
+  /**
+   * The render checks displays the simple page
+   * @returns  {ReactElement} A white page with a welcome message
+   * @memberof SplashPage
+   */
   render() {
     return (
       <View style={styles.container}>
@@ -48,9 +65,6 @@ const SplashPage = createReactClass({
     );
   }
 });
-SplashPage.navigationOptions = {
-  title: 'Galactica'
-};
 
 const styles = StyleSheet.create({
   container: {

@@ -23,7 +23,6 @@ const createReactClass = require('create-react-class');
 /**
  * List item is rendered in this class
  * @class
- *
  * @memberof ListItem
  */
 const ListItem = createReactClass({
@@ -35,7 +34,6 @@ const ListItem = createReactClass({
 
   /**
    * Calls its parent function from its props to handle press
-   *
    * @memberof ListItem
    */
   _onPress: function() {
@@ -43,9 +41,7 @@ const ListItem = createReactClass({
   },
   /**
    * The render checks that values are properly defined and displays a list item
-   *
-   * @returns  {TouchableHighlight} A touchable list element containing all necessary data
-   *
+   * @returns  {ReactElement} A touchable list element containing all necessary data
    * @memberof ListItem
    */
   render: function() {

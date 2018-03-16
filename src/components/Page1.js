@@ -1,3 +1,10 @@
+/**
+ * @fileoverview  This component renders search results
+ *
+ * @author        Antoine Chwat
+ *
+ * @namespace     Page1
+ */
 'use strict';
 
 const React = require('react');
@@ -11,6 +18,11 @@ const createReactClass = require('create-react-class');
 
 const ListItem = require('./ListItem');
 
+/**
+ * The search results are rendered in this class
+ * @class
+ * @memberof Page1
+ */
 const Page1 = createReactClass({
   propTypes: {
     results: PropTypes.object.isRequired,
@@ -19,12 +31,9 @@ const Page1 = createReactClass({
 
   /**
    * Method to extract a unique key from an item at a specific index
-   *
    * @param    {Object} item  item to extract key from
-   * @param    {number} index index associated to item
-   *
-   * @returns  {string}       The extracted key
-   *
+   * @param    {Number} index index associated to item
+   * @returns  {String}       The extracted key
    * @memberof Page1
    */
   _keyExtractor: function(item, index) {
@@ -33,11 +42,8 @@ const Page1 = createReactClass({
 
   /**
    * Method to render a list item for each element in the results
-   *
-   * @param    {Object} item item taken from the results by the flat list
-   *
-   * @returns  {ListItem}    a list item
-   *
+   * @param    {Object}       item item taken from the results by the flat list
+   * @returns  {ReactElement}      A list item
    * @memberof Page1
    */
   _renderItem: function({item}) {
@@ -52,7 +58,6 @@ const Page1 = createReactClass({
 
   /**
    * Calls a function from its container to handle a touchable highlight press
-   *
    * @memberof Page1
    */
   _onPressItem: function(index, item) {
@@ -61,9 +66,7 @@ const Page1 = createReactClass({
 
   /**
    * The render displays a flat list which shows all the results returned
-   *
-   * @returns  {FlatList} A list of results
-   *
+   * @returns  {ReactElement} A list of results
    * @memberof Page1
    */
   render: function() {
