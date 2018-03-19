@@ -24,7 +24,6 @@ const initialNavState = router.getStateForAction({});
  */
 const navigatorReducer = (state = initialNavState, action) => {
   const nextState = MainNavigator.router.getStateForAction(action, state);
-  console.log(nextState);
   return nextState || state;
 };
 

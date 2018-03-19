@@ -3,7 +3,11 @@ const initialState = {
   results: {},
   item: {},
   moreResults: {},
-  newItem: {}
+  newItem: {},
+  coordinates: {
+    latitude: '',
+    longitude: ''
+  }
 };
 
 const mainReducer = function(state = initialState, action) {
@@ -32,6 +36,13 @@ const mainReducer = function(state = initialState, action) {
       return (
         Object.assign({}, state, {
           newItem: Object.assign({}, action.item)
+        })
+      );
+    case 'RETURN_COORDINATES':
+      console.log(state.coordinates);
+      return (
+        Object.assign({}, state, {
+          coordinates: Object.assign({}, action.coordinates)
         })
       );
     default:

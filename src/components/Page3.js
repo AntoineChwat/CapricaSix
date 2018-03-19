@@ -35,7 +35,10 @@ const instructions = Platform.select({
 const Page3 = createReactClass({
   propTypes: {
     navigate: PropTypes.func,
-    back: PropTypes.func
+    back: PropTypes.func,
+    geolocate: PropTypes.func,
+    latitude: PropTypes.any,
+    longitude: PropTypes.any
   },
 
   /**
@@ -65,6 +68,17 @@ const Page3 = createReactClass({
           color='#48BBEC'
           title='Back'
         />
+        <Button
+          onPress={this.props.geolocate}
+          color='#48BBEC'
+          title='Geolocate'
+        />
+        <Text style={styles.instructions}>
+          {this.props.latitude}
+        </Text>
+        <Text style={styles.instructions}>
+          {this.props.longitude}
+        </Text>
       </View>
     );
   }

@@ -151,6 +151,14 @@ const goToNewProperty = function(price) {
   };
 };
 
+const returnCoordinates = function(coordinates) {
+  console.log('THERE');
+  return {
+    type: 'RETURN_COORDINATES',
+    coordinates: coordinates
+  };
+};
+
 module.exports = {
   loadMoreData,
   moreDataLoaded,
@@ -159,5 +167,6 @@ module.exports = {
   returnItem,
   returnNewItem,
   goToProperty,
-  goToNewProperty
+  goToNewProperty,
+  returnCoordinates
 };

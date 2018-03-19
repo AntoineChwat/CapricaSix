@@ -4,6 +4,9 @@ const connect = require('react-redux').connect;
 
 const Page3 = require('../components/Page3');
 
+const actions = require('../actions/actions');
+const returnCoordinates = actions.returnCoordinates;
+
 /**
  * This function maps the useful part of our application's state to our Main Page's props
  *
@@ -15,7 +18,8 @@ const Page3 = require('../components/Page3');
  */
 const mapStateToProps = function(state) {
   return {
-    nav: state.nav
+    latitude: state.main.coordinates.latitude,
+    longitude: state.main.coordinates.longitude
   };
 };
 
@@ -35,6 +39,12 @@ const mapDispatchToProps = function(dispatch) {
     },
     back: function() {
       dispatch(NavigationActions.back());
+    },
+    geolocate: function() {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position);
+        dispatch(returnCoordinates({latitude: position.coords.latitude, longitude: position.coords.longitude}));
+      });
     }
   };
 };
