@@ -8,9 +8,10 @@
 'use strict';
 
 const MainNavigator = require('../utils/SideNavigator');
+const NavigationActions = require('react-navigation').NavigationActions;
 
 const router = MainNavigator.router;
-const initialNavState = router.getStateForAction({});
+const initialNavState = router.getStateForAction(NavigationActions.init());
 
 /**
  * The navigation reducer updates the navigation state based on the actions it receives

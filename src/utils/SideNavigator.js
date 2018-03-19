@@ -23,6 +23,7 @@ const createReactClass = require('create-react-class');
 const mapDispatchToProps = function(dispatch) {
   return {
     onItemPressed: function() {
+      dispatch(NavigationActions.navigate({routeName: 'Main'}));
       dispatch(NavigationActions.reset(
         {
           index: 0,
