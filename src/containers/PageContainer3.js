@@ -52,6 +52,8 @@ const mapDispatchToProps = function(dispatch) {
     takePicture: function() {
       console.log(camera);
       camera.showImagePicker(response => {
+        console.log('Here');
+        console.log(response);
         const item = {
           img_url: response.uri
         };
