@@ -37,6 +37,8 @@ const Page3 = createReactClass({
     navigate: PropTypes.func,
     back: PropTypes.func,
     geolocate: PropTypes.func,
+    takePicture: PropTypes.func,
+    test: PropTypes.func,
     latitude: PropTypes.any,
     longitude: PropTypes.any
   },
@@ -79,6 +81,16 @@ const Page3 = createReactClass({
         <Text style={styles.instructions}>
           {this.props.longitude}
         </Text>
+        <Button
+          onPress={this.props.takePicture}
+          color='#48BBEC'
+          title='Photo'
+        />
+        <Button
+          onPress={this.props.test}
+          color='#48BBEC'
+          title='Test'
+        />
       </View>
     );
   }

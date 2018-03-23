@@ -6,6 +6,9 @@ const Page3 = require('../components/Page3');
 
 const actions = require('../actions/actions');
 const returnCoordinates = actions.returnCoordinates;
+const returnItem = actions.returnItem;
+
+const camera = require('react-native-camera-module');
 
 /**
  * This function maps the useful part of our application's state to our Main Page's props
@@ -44,6 +47,21 @@ const mapDispatchToProps = function(dispatch) {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position);
         dispatch(returnCoordinates({latitude: position.coords.latitude, longitude: position.coords.longitude}));
+      });
+    },
+    takePicture: function() {
+      console.log(camera);
+      camera.showImagePicker(response => {
+        const item = {
+          img_url: response.uri
+        };
+        dispatch(returnItem(item));
+        dispatch(NavigationActions.navigate({ routeName: 'Property'}));
+      });
+    },
+    test: function() {
+      camera.test(response => {
+        console.log(response);
       });
     }
   };
