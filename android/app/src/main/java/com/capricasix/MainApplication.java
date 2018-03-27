@@ -3,6 +3,10 @@ package com.capricasix;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.BarCodeScannerPackage;
+import com.reactlibrary.CameraModulePackage;
+import com.reactlibrary.BarCodeScannerPackage;
+import com.reactlibrary.CameraModulePackage;
 import com.reactlibrary.CameraModulePackage;
 import com.reactlibrary.CameraModulePackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BarCodeScannerPackage(),
+            new CameraModulePackage(),
+            new BarCodeScannerPackage(),
+            new CameraModulePackage(),
             new CameraModulePackage()
       );
     }

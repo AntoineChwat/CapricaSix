@@ -137,6 +137,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-bar-code-scanner')
+    compile project(':react-native-camera-module')
+    compile project(':react-native-bar-code-scanner')
+    compile project(':react-native-camera-module')
     compile project(':react-native-camera-module')
     compile project(':react-native-camera-module')
     compile fileTree(dir: "libs", include: ["*.jar"])

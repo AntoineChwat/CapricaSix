@@ -10,6 +10,8 @@ const returnItem = actions.returnItem;
 
 const camera = require('react-native-camera-module');
 
+const scanner = require('react-native-bar-code-scanner').default;
+
 /**
  * This function maps the useful part of our application's state to our Main Page's props
  *
@@ -62,9 +64,11 @@ const mapDispatchToProps = function(dispatch) {
       });
     },
     test: function() {
-      camera.test(response => {
-        console.log(response);
-      });
+      console.log(scanner);
+      // scanner.scanBarCode(response => {
+      //   console.log(response);
+      // });
+      scanner.startSession();
     }
   };
 };

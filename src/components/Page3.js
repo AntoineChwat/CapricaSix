@@ -15,6 +15,8 @@ const StyleSheet = ReactNative.StyleSheet;
 const Text = ReactNative.Text;
 const View = ReactNative.View;
 const Button = ReactNative.Button;
+const Alert = ReactNative.Alert;
+const requireNativeComponent = ReactNative.requireNativeComponent;
 
 const createReactClass = require('create-react-class');
 
@@ -37,10 +39,19 @@ const Page3 = createReactClass({
     navigate: PropTypes.func,
     back: PropTypes.func,
     geolocate: PropTypes.func,
+    onBarCodeRead: PropTypes.func,
     takePicture: PropTypes.func,
     test: PropTypes.func,
     latitude: PropTypes.any,
     longitude: PropTypes.any
+  },
+
+  _onBarCodeRead(e) {
+    Alert.alert(
+      'Warning',
+      e.nativeEvent.data.type,
+      [{text: 'OK', onPress: () => {}}]
+    );
   },
 
   /**
@@ -51,46 +62,55 @@ const Page3 = createReactClass({
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-        <Button
-          onPress={this.props.navigate}
-          color='#48BBEC'
-          title='Go'
-        />
-        <Button
-          onPress={this.props.back}
-          color='#48BBEC'
-          title='Back'
-        />
-        <Button
-          onPress={this.props.geolocate}
-          color='#48BBEC'
-          title='Geolocate'
-        />
-        <Text style={styles.instructions}>
-          {this.props.latitude}
-        </Text>
-        <Text style={styles.instructions}>
-          {this.props.longitude}
-        </Text>
-        <Button
-          onPress={this.props.takePicture}
-          color='#48BBEC'
-          title='Photo'
-        />
-        <Button
-          onPress={this.props.test}
-          color='#48BBEC'
-          title='Test'
-        />
+        <View style = {{flex: 5}}>
+          <Text style={styles.welcome}>
+            Welcome to React Native!
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit App.js
+          </Text>
+          <Text style={styles.instructions}>
+            {instructions}
+          </Text>
+          <Button
+            onPress={this.props.navigate}
+            color='#48BBEC'
+            title='Go'
+          />
+          <Button
+            onPress={this.props.back}
+            color='#48BBEC'
+            title='Back'
+          />
+          <Button
+            onPress={this.props.geolocate}
+            color='#48BBEC'
+            title='Geolocate'
+          />
+          <Text style={styles.instructions}>
+            {this.props.latitude}
+          </Text>
+          <Text style={styles.instructions}>
+            {this.props.longitude}
+          </Text>
+          <Button
+            onPress={this.props.takePicture}
+            color='#48BBEC'
+            title='Photo'
+          />
+          <Button
+            onPress={this.props.test}
+            color='#48BBEC'
+            title='Test'
+          />
+        </View>
+        <View style= {{flex: 1}}>
+          <BarCode
+            style = {{flex: 1}}
+            onBarCodeRead = {this._onBarCodeRead}
+          />
+          <Text> Hello </Text>
+        </View>
       </View>
     );
   }
@@ -117,5 +137,7 @@ const styles = StyleSheet.create({
     marginBottom: 5
   }
 });
+
+const BarCode = requireNativeComponent('BarCode', Page3);
 
 module.exports = Page3;

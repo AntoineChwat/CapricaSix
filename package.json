@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "^16.3.0-alpha.1",
     "react-native": "^0.54.1",
-    "react-native-camera-module": "file:./node_modules/react-native-camera-module",
+    "react-native-camera-module": "file:../Modules/CameraModule",
+    "react-native-bar-code-scanner": "file:../Modules/BarCodeScanner",
     "react-navigation": "^1.5.1",
     "react-navigation-redux-helpers": "^1.0.3",
     "react-redux": "^5.0.7",
